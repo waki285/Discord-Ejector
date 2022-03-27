@@ -56,7 +56,15 @@ client.on("messageCreate", async (message) => {
       .setTimestamp();
     message.reply({ embeds: [embed] });
   } else if (command === "gen") {
-    
+    if (!config.usableChannelId.includes(message.channel.id)) {
+      const embed = new MessageEmbed()
+        .setTitle("エラー")
+        .setDescription(`このチャンネルでは使用できません`)
+        .setColor("RANDOM")
+        .setTimestamp();
+      message.reply({ embeds: [embed] });
+      return;
+    }
     const files = fs.readdirSync("./files").filter((file) => file.endsWith(".txt"));
     const hosiimo = args.join(" ").toLowerCase();
     const file = files.find(x => x === hosiimo + ".txt");
