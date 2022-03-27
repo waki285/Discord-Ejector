@@ -44,8 +44,8 @@ client.on("messageCreate", async (message) => {
       .setTimestamp();
     message.reply({ embeds: [embed] });
   } else if (command === "stock") {
-    const files = fs.readdirSync("../files").filter((file) => file.endsWith(".txt"));
-    const zaikos = files.map((file) => fs.readFileSync(`../files/${file}`, "utf8").length);
+    const files = fs.readdirSync("./files").filter((file) => file.endsWith(".txt"));
+    const zaikos = files.map((file) => fs.readFileSync(`./files/${file}`, "utf8").length);
     const embed = new MessageEmbed()
       .setTitle("在庫")
       .setDescription(`${files.map((x, i) => `${x}: ${zaikos[i]}`).join("\n")}`)
@@ -53,7 +53,7 @@ client.on("messageCreate", async (message) => {
       .setTimestamp();
     message.reply({ embeds: [embed] });
   } else if (command === "gen") {
-    const files = fs.readdirSync("../files").filter((file) => file.endsWith(".txt"));
+    const files = fs.readdirSync("./files").filter((file) => file.endsWith(".txt"));
     const hosiimo = args.join(" ").toLowerCase();
     const file = files.find(x => x === hosiimo + ".txt");
     if (!file) {
@@ -65,7 +65,7 @@ client.on("messageCreate", async (message) => {
       message.reply({ embeds: [embed] });
       return;
     }
-    const nakami = fs.readFileSync(`../files/${file}`, "utf8").split("\n")
+    const nakami = fs.readFileSync(`./files/${file}`, "utf8").split("\n")
     const ejected = nakami[0];
     nakami.splice(0, 1);
     message.member.send({ embeds: [new MessageEmbed().setTitle(`アカウント情報`).setFields([
@@ -82,7 +82,7 @@ client.on("messageCreate", async (message) => {
         embeds: [new MessageEmbed().setTitle(`DMに送信できませんでした`).setDescription("DM設定を確認s似てください").setColor("RANDOM").setTimestamp()]
       });
     });
-    fs.writeFileSync(`../files/${file}`, nakami.join("\n"));
+    fs.writeFileSync(`./files/${file}`, nakami.join("\n"));
   }
 });
 
