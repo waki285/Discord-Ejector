@@ -129,7 +129,8 @@ client.on("messageCreate", async (message) => {
       ] })
       fs.writeFileSync(`./files/${file}`, nakami.join("\n"));
     })
-    .catch(() => {
+    .catch((e) => {
+      console.log(e)
       message.reply({
         embeds: [new MessageEmbed().setTitle(`DMに送信できませんでした`).setDescription("DM設定を確認s似てください").setColor("RANDOM").setTimestamp()]
       });
