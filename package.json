@@ -1,0 +1,27 @@
+{
+  "name": "discord-ejector",
+  "version": "1.0.0",
+  "description": "eject data",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waki285/Discord-Ejector.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "author": "waki285 <suzuneu@suzuneu.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/waki285/Discord-Ejector/issues"
+  },
+  "homepage": "https://github.com/waki285/Discord-Ejector#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
