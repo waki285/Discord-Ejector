@@ -84,4 +84,6 @@ client.on("messageCreate", async (message) => {
     });
     fs.writeFileSync(`../files/${file}`, nakami.join("\n"));
   }
-})
+});
+
+client.login(process.env.BOT_TOKEN);
