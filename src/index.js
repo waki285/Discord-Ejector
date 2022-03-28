@@ -48,10 +48,10 @@ client.on("messageCreate", async (message) => {
     message.reply({ embeds: [embed] });
   } else if (command === "stock") {
     const files = fs.readdirSync("./files").filter((file) => file.endsWith(".txt"));
-    const zaikos = files.map((file) => fs.readFileSync(`./files/${file}`, "utf8").split("\n").length);
+    const zaikos = files.map((file) => fs.readFileSync(`./files/${file}`, "utf8"));
     const embed = new MessageEmbed()
       .setTitle("在庫")
-      .setDescription(`${files.map((x, i) => `${x.replace(/\.txt$/, "")}: ${zaikos[i]}`).join("\n")}`)
+      .setDescription(`${files.map((x, i) => `${x.replace(/\.txt$/, "")}: ${zaikos[i].length === 0 ? 0:zaikos[i].split("\n").length }`).join("\n")}`)
       .setColor("RANDOM")
       .setTimestamp();
     message.reply({ embeds: [embed] });
