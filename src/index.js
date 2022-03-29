@@ -132,7 +132,7 @@ client.on("messageCreate", async (message) => {
     .catch((e) => {
       console.log(e)
       message.reply({
-        embeds: [new MessageEmbed().setTitle(`DMに送信できませんでした`).setDescription("DM設定を確認s似てください").setColor("RANDOM").setTimestamp()]
+        embeds: [new MessageEmbed().setTitle(`DMに送信できませんでした`).setDescription("DM設定を確認してください").setColor("RANDOM").setTimestamp()]
       });
     });
     
