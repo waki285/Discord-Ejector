@@ -116,7 +116,7 @@ client.on("messageCreate", async (message) => {
     }
     cooldowns.set(message.author.id, Date.now());
     nakami.splice(0, 1);
-    message.member.send({ embeds: [new MessageEmbed().setTitle(`アカウント情報`).setFields([
+    message.member.send({ embeds: [new MessageEmbed().setTitle(`${hosiimo} アカウント情報`).setFields([
       { name: "アカウント名/メールアドレス", value: ejected.split(":")[0] },
       { name: "パスワード", value: ejected.split(":")[1] }
     ]).setColor("RANDOM").setTimestamp()], content: `コピペ用: ${ejected}` })
