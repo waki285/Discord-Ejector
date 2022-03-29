@@ -125,7 +125,7 @@ client.on("messageCreate", async (message) => {
         embeds: [new MessageEmbed().setTitle(`DMに送信しました！`).setDescription("DMをチェックしてください").setColor("RANDOM").setTimestamp()]
       });
       client.channels.cache.get(config.logChannelId).send({ embeds: [
-        { title: "排出", fields: [ { name: "ユーザー", value: `${message.author.tag}/${message.author.id}`}, { name: "排出物", value: `${hosiimo}/${ejected}`} ]}
+        { title: hosiimo + " 排出", fields: [ { name: "ユーザー", value: `${message.author.tag}/${message.author.id}`}, { name: "排出物", value: `${hosiimo}/${ejected}`} ]}
       ] })
       fs.writeFileSync(`./files/${file}`, nakami.join("\n"));
     })
