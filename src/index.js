@@ -7,6 +7,7 @@ const client = new Client({
   restTimeOffset: 0
 });
 const fs = require("fs");
+const { fromSeconds } = require("from-seconds");
 
 const prefix = ".";
 /** @type {WeakMap<string, number>} */
@@ -94,9 +95,11 @@ client.on("messageCreate", async (message) => {
       const premiumUsers = fs.readFileSync("./config/premium.txt", "utf8").split("\n");
       if (premiumUsers.includes(message.author.id)) {
         if ((now - time) < config.premiumUserCooldown) {
+          const dd = fromSeconds(Math.round((config.premiumUserCooldown - (now - time)) / 1000));
+          const result = dd.toHours();
           const embed = new MessageEmbed()
             .setTitle("エラー")
-            .setDescription(`あなたはまだクールダウン中です。\n${(config.premiumUserCooldown - (now - time)) / 1000}秒後に再度実行してください。`)
+            .setDescription(`あなたはまだクールダウン中です。\n${result.hours}時間${result.minutes}分${result.seconds}後に再度実行してください。`)
             .setColor("RANDOM")
             .setTimestamp();
           message.reply({ embeds: [embed] });
@@ -104,9 +107,11 @@ client.on("messageCreate", async (message) => {
         }
       } else {
         if ((now - time) < config.normalUserCooldown) {
+          const dd = fromSeconds(Math.round((config.normalUserCooldown - (now - time)) / 1000));
+          const result = dd.toHours();
           const embed = new MessageEmbed()
             .setTitle("エラー")
-            .setDescription(`あなたはまだクールダウン中です。\n${(config.normalUserCooldown - (now - time)) / 1000}秒後に再度実行してください。`)
+            .setDescription(`あなたはまだクールダウン中です。\n${result.hours}時間${result.minutes}分${result.seconds}後に再度実行してください。`)
             .setColor("RANDOM")
             .setTimestamp();
           message.reply({ embeds: [embed] });
