@@ -57,6 +57,16 @@ client.on("messageCreate", async (message) => {
       .setTimestamp();
     message.reply({ embeds: [embed] });
   } else if (command === "gen") {
+    const niggers = fs.readFileSync("./config/nigger.txt", "utf8").split("\n");
+    if (niggers.includes(message.author.id)) {
+      const embed = new MessageEmbed()
+        .setTitle("エラー")
+        .setDescription(`あなたは管理者に黒人認定されているため使用することができません`)
+        .setColor("RANDOM")
+        .setTimestamp();
+      message.reply({ embeds: [embed] });
+      return;
+    }
     if (!config.usableChannelId.includes(message.channel.id)) {
       const embed = new MessageEmbed()
         .setTitle("エラー")
